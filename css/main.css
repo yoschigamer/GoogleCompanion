@@ -1,0 +1,16 @@
+:root {
+    --Img1: Url("https://i.imgur.com/2S4Zz5X.gif")
+}
+
+.myclass>img {
+    width: 300px;
+    aspect-ratio: 1/1;
+    bottom: 0px;
+    position: fixed;
+    z-index: 99999;
+    transition: all 0.3s;
+}
+
+.myclass>img:hover {
+    opacity: 0.1;
+}
