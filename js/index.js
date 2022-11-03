@@ -6,13 +6,39 @@ chrome.tabs.onUpdated.addListener(async (tabId, info) => {
 
         function inject() {
 
-            var div = document.createElement('div');
-            div.innerHTML = '<img src="https://i.imgur.com/cDEST92.gif">';
-            // better to use CSS though - just set class
-            div.setAttribute('class', 'myclass'); // and make sure myclass has some styles in css
-            document.body.appendChild(div);
+            if (!document.body.querySelector(".myclass")) {
 
-            console.log("dqzd");
+                const URL = "https://i.imgur.com/cDEST92.gif"
+
+                function hover() {
+                    const amibo = document.body.querySelector(".MyAmobi");
+                    var x = null;
+                    var y = null;
+
+                    document.addEventListener('mousemove', onMouseUpdate, false);
+
+                    function onMouseUpdate(e) {
+                        x = e.pageX;
+                        y = e.pageY;
+                        if (x < 300 && y > 600) {
+                            amibo.style.opacity = 0.1;
+                        }
+                        else {
+                            amibo.style.opacity = 1;
+                        }
+                    }
+                }
+
+                function MyAmobiCréator() {
+                    var div = document.createElement('div');
+                    div.innerHTML = `<img class="MyAmobi" src="${URL}">`;
+                    // better to use CSS though - just set class
+                    div.setAttribute('class', 'myclass'); // and make sure myclass has some styles in css
+                    document.body.appendChild(div);
+                    hover()
+                }
+                MyAmobiCréator();
+            }
         }
 
         chrome.scripting.executeScript(
